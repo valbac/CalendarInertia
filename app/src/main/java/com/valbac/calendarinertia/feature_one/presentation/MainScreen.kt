@@ -29,16 +29,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.valbac.calendarinertia.CalendarInertiaApplication
 import com.valbac.calendarinertia.feature_one.presentation.calendar.CalendarMonthScreen
 import com.valbac.calendarinertia.feature_one.presentation.settings.SettingsScreen
 import com.valbac.calendarinertia.feature_one.presentation.task.TaskInfoScreen
-import com.valbac.calendarinertia.feature_one.presentation.task.TaskState
-import com.valbac.calendarinertia.feature_one.presentation.task.TaskViewModel
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -48,13 +43,6 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     navigator: DestinationsNavigator,
 ) {
-
-    val viewModel = viewModel<TaskViewModel>(
-        factory = viewModelFactory {
-            TaskViewModel(CalendarInertiaApplication.appModule.taskRepository)
-        }
-    )
-
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -136,7 +124,7 @@ fun MainScreen(
             {
                 when (selectedItemIndex) {
                     0 -> CalendarMonthScreen()
-                    1 -> TaskInfoScreen(navigator = navigator, viewModel = viewModel)
+                    1 -> TaskInfoScreen(navigator = navigator)
                     5 -> SettingsScreen(navigator = navigator)
                 }
             }

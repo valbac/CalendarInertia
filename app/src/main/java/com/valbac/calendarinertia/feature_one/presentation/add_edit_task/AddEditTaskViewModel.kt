@@ -6,9 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.valbac.calendarinertia.feature_one.domain.model.TaskEntity
 import com.valbac.calendarinertia.feature_one.domain.repository.TaskRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AddEditTaskViewModel(
+@HiltViewModel
+class AddEditTaskViewModel @Inject constructor(
     private val repository: TaskRepository
 ) : ViewModel() {
 

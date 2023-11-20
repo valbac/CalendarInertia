@@ -10,7 +10,9 @@ import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.valbac.calendarinertia.feature_one.presentation.NavGraphs
 import com.valbac.calendarinertia.ui.theme.CalendarInertiaTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

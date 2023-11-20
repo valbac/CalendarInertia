@@ -21,11 +21,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.valbac.calendarinertia.feature_one.presentation.add_edit_task.AddEditTaskViewModel
 import com.valbac.calendarinertia.feature_one.presentation.destinations.AddEditTaskScreenDestination
-import com.valbac.calendarinertia.feature_one.presentation.destinations.SettingsScreenDestination
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,7 +32,7 @@ import com.valbac.calendarinertia.feature_one.presentation.destinations.Settings
 @Composable
 fun TaskInfoScreen(
     navigator: DestinationsNavigator,
-    viewModel: TaskViewModel
+    viewModel: TaskViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
 

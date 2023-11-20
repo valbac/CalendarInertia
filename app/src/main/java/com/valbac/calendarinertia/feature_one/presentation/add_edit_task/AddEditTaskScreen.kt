@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -22,11 +23,11 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Destination
 @Composable
 fun AddEditTaskScreen(
-    navigator: DestinationsNavigator,
-    viewModel: AddEditTaskViewModel
+    //navigator: DestinationsNavigator,
+    viewModel: AddEditTaskViewModel = hiltViewModel()
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
+    //val scope = rememberCoroutineScope()
 
     Scaffold(
         floatingActionButton = {
