@@ -21,6 +21,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
     }
 
     buildTypes {
@@ -78,8 +79,8 @@ dependencies {
     ksp("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
 
     // Room
-    implementation ("androidx.room:room-runtime:2.5.0")
-    ksp ("androidx.room:room-compiler:2.5.0")
+    implementation ("androidx.room:room-runtime:2.5.1")
+    ksp ("androidx.room:room-compiler:2.5.1")
 
     // Kotlin Extensions and Coroutines support for Room
     implementation ("androidx.room:room-ktx:2.5.0")

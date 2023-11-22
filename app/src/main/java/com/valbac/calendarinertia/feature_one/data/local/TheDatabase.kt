@@ -6,7 +6,8 @@ import com.valbac.calendarinertia.feature_one.domain.model.TaskEntity
 
 @Database(
     entities = [TaskEntity::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class TheDatabase : RoomDatabase() {
     abstract val taskDao: TaskDao

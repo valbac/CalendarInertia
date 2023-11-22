@@ -20,7 +20,8 @@ class AddEditTaskViewModel @Inject constructor(
 
     fun onEvent(event: AddEditTaskEvent) {
         when (event) {
-            AddEditTaskEvent.SaveTask -> {
+            is AddEditTaskEvent.SaveTask -> {
+
                 val title = state.value.title
                 val description = state.value.description
 

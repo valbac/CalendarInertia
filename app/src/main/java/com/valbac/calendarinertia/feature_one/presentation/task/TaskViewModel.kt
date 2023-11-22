@@ -14,8 +14,10 @@ class TaskViewModel @Inject constructor(
     private val repository: TaskRepository
 ) : ViewModel() {
 
-    private val _state = mutableStateOf (TaskState())
+    private val _state = mutableStateOf(TaskState())
     val state: State<TaskState> = _state
+
+    val tasks = repository.getTasks()
 
     fun onEvent(event: TaskEvent) {
         when (event) {
@@ -24,7 +26,8 @@ class TaskViewModel @Inject constructor(
                     repository.deleteTask(event.task)
                 }
             }
-            TaskEvent.RestoreNote -> TODO( )
+
+            TaskEvent.RestoreNote -> TODO()
         }
     }
 }

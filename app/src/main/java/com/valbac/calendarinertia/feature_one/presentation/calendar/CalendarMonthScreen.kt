@@ -66,7 +66,7 @@ fun CalendarMonthScreen(
                 Day(
                     day = day,
                     isToday = day.position == DayPosition.MonthDate && day.date == today,
-                    isSelected = selectedDate == day.date) { day ->
+                    isSelected = selectedDate == day.date) {day ->
                     selectedDate = if (selectedDate == day.date) null else day.date
                 }
             },

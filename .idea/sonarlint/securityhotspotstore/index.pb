@@ -45,8 +45,6 @@ kapp/src/main/java/com/valbac/calendarinertia/feature_one/presentation/add_edit_
 [app/src/main/java/com/valbac/calendarinertia/feature_one/presentation/task/TaskViewModel.kt,f\c\fcc7fd8e16f125a52a7c1069ea7cac2eaeea6e40
 Ç
 Rapp/src/main/java/com/valbac/calendarinertia/feature_one/data/local/TheDatabase.kt,5\d\5d8f9d575359a7bf1e1e3984e590f22de5a2ad84
-è
-_app/src/main/java/com/valbac/calendarinertia/feature_one/presentation/ViewModelFactoryHelper.kt,b\4\b4c7566ea55da495e93ae54a681e038de2e8ceca
 Ö
 Uapp/src/main/java/com/valbac/calendarinertia/feature_one/presentation/calendar/Day.kt,8\1\818b5cf6e73e8f15419509276d358ee983aaa11d
 ç
@@ -61,3 +59,5 @@ n
 ]app/src/main/java/com/valbac/calendarinertia/feature_one/presentation/calendar/MonthFooter.kt,7\c\7c7f16f29382f8dfb62405e7b8b1c94109973834
 ~
 Napp/src/androidTest/java/com/valbac/calendarinertia/ExampleInstrumentedTest.kt,4\5\45876a23e4377aeddc82f2e758003aec3d7af744
+Ü
+Vapp/src/main/java/com/valbac/calendarinertia/feature_one/presentation/task/TaskItem.kt,9\6\96a0c3c72f1a6f20a4169cd48839aa9c95698b38
