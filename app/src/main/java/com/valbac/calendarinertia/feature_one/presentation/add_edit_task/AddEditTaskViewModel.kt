@@ -24,6 +24,13 @@ class AddEditTaskViewModel @Inject constructor(
 
                 val title = state.value.title
                 val description = state.value.description
+                val color = state.value.color
+                val dateDay = state.value.dateDay
+                val dateMonth = state.value.dateMonth
+                val dateYear = state.value.dateYear
+                val hour = state.value.hour
+                val minute = state.value.minute
+                val second = state.value.second
 
                 if (title.isBlank() || description.isBlank()) {
                     return
@@ -32,14 +39,20 @@ class AddEditTaskViewModel @Inject constructor(
                 val task = TaskEntity(
                     title = title,
                     description = description,
-                    isDone = false
+                    isDone = false,
+                    color = color,
+                    dateDay = dateDay,
+                    dateMonth = dateMonth,
+                    dateYear = dateYear,
+                    hour = hour,
+                    minute = minute,
+                    second = second,
                 )
 
                 viewModelScope.launch {
                     repository.upsertTask(task)
                 }
                 _state.value = state.value.copy(
-                    isAddingTask = false,
                     title = "",
                     description = ""
                 )
@@ -54,6 +67,28 @@ class AddEditTaskViewModel @Inject constructor(
             is AddEditTaskEvent.SetTitle -> {
                 _state.value = state.value.copy(
                     title = event.title
+                )
+            }
+
+            is AddEditTaskEvent.SetTime -> {
+                _state.value = state.value.copy(
+                    hour = event.hour,
+                    minute = event.minute,
+                    second = event.second
+                )
+            }
+
+            is AddEditTaskEvent.SetDate -> {
+                _state.value = state.value.copy(
+                    dateDay = event.dateDay,
+                    dateMonth = event.dateMonth,
+                    dateYear = event.dateYear
+                )
+            }
+
+            is AddEditTaskEvent.SetColor -> {
+                _state.value = state.value.copy(
+                    color = event.color
                 )
             }
         }

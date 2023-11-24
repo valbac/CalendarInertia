@@ -49,11 +49,10 @@ fun TaskInfoScreen(
             Divider(thickness = 64.dp)
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(tasks.value) { task ->
                     TaskItem(task = task)
-                    Divider()
                 }
             }
         }
