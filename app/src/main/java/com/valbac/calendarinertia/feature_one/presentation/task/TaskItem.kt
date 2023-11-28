@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -61,12 +62,22 @@ fun TaskItem(
                 fontSize = 14.sp
             )
         }
-        IconButton(onClick = {
-            viewModel.onEvent(TaskEvent.DeleteTask(task))
-        }) {
-            Icon(
-                imageVector = Icons.Default.Delete,
-                contentDescription = "Delete Task"
+        Column(
+            modifier = Modifier.padding(vertical = 12.dp),
+        ) {
+            IconButton(onClick = {
+                viewModel.onEvent(TaskEvent.DeleteTask(task))
+            }) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Delete Task"
+                )
+            }
+            Checkbox(
+                checked = task.isDone,
+                onCheckedChange = {isChecked ->
+                    viewModel.onEvent(TaskEvent.OnDoneChange(task, isChecked))
+                }
             )
         }
     }

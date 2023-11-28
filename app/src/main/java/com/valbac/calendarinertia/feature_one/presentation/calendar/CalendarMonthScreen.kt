@@ -7,14 +7,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.compose.CalendarState
 import com.kizitonwose.calendar.compose.ContentHeightMode
@@ -25,6 +22,7 @@ import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.OutDateStyle
 import com.kizitonwose.calendar.core.daysOfWeek
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.flow.filter
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -34,7 +32,7 @@ import java.time.YearMonth
 @Destination
 @Composable
 fun CalendarMonthScreen(
-    //navigator: DestinationsNavigator,
+    navigator: DestinationsNavigator
 ) {
     Column(
         modifier = Modifier
@@ -43,12 +41,13 @@ fun CalendarMonthScreen(
     ) {
         Divider(thickness = 64.dp)
 
+
         val today = remember { LocalDate.now() }
         val currentMonth = remember { YearMonth.now() }
         val startMonth = remember { currentMonth.minusMonths(100) } // Adjust as needed
         val endMonth = remember { currentMonth.plusMonths(100) } // Adjust as needed
         val daysOfWeek = remember { daysOfWeek(firstDayOfWeek = DayOfWeek.MONDAY) }
-        var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
+        //var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
 
         val state = rememberCalendarState(
             startMonth = startMonth,
@@ -66,9 +65,8 @@ fun CalendarMonthScreen(
                 Day(
                     day = day,
                     isToday = day.position == DayPosition.MonthDate && day.date == today,
-                    isSelected = selectedDate == day.date) {day ->
-                    selectedDate = if (selectedDate == day.date) null else day.date
-                }
+                    navigator = navigator
+                )
             },
             monthHeader = {
                 MonthHeader(
@@ -95,10 +93,4 @@ fun rememberFirstVisibleMonthAfterScroll(state: CalendarState): CalendarMonth {
             .collect { visibleMonth.value = state.firstVisibleMonth }
     }
     return visibleMonth.value
-}
-
-@Preview
-@Composable
-private fun CalendarMonthScreenPreview() {
-    CalendarMonthScreen()
 }

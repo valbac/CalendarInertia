@@ -1,7 +1,5 @@
 package com.valbac.calendarinertia.feature_one.presentation.task
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.valbac.calendarinertia.feature_one.domain.repository.TaskRepository
@@ -14,8 +12,9 @@ class TaskViewModel @Inject constructor(
     private val repository: TaskRepository
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(TaskState())
-    val state: State<TaskState> = _state
+    /*private val _state = mutableStateOf(TaskState())
+    val state: State<TaskState> = _state*/
+
 
     val tasks = repository.getTasks()
 
@@ -27,7 +26,17 @@ class TaskViewModel @Inject constructor(
                 }
             }
 
-            TaskEvent.RestoreNote -> TODO()
+            is TaskEvent.RestoreNote -> TODO()
+
+            is TaskEvent.OnDoneChange -> {
+                viewModelScope.launch {
+                    repository.upsertTask(
+                        event.task.copy(
+                            isDone = event.isDone
+                        )
+                    )
+                }
+            }
         }
     }
 }

@@ -3,34 +3,52 @@ package com.valbac.calendarinertia.feature_one.presentation.calendar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.valbac.calendarinertia.feature_one.presentation.destinations.AddEditTaskScreenDestination
+import com.valbac.calendarinertia.feature_one.presentation.destinations.DayInfoScreenDestination
+import com.valbac.calendarinertia.feature_one.presentation.task.TaskViewModel
 
 @Composable
 fun Day(
+    viewModel: TaskViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator,
     day: CalendarDay,
-    isSelected: Boolean,
     isToday: Boolean,
-    onClick: (CalendarDay) -> Unit
 ) {
+    val tasks = viewModel.tasks.collectAsState(initial = emptyList())
+    val scrollState = rememberScrollState()
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
             .border(
-                width = if (isSelected) 1.dp else 0.dp,
-                color = if (isSelected) Color.White else Color.Transparent,
+                width =  0.dp,
+                color = Color.Transparent,
             )
             .padding(1.dp)
             .background(
@@ -41,8 +59,7 @@ fun Day(
                 }
             )
             .clickable(
-                enabled = day.position == DayPosition.MonthDate,
-                onClick = { onClick(day) }
+                onClick = { navigator.navigate(DayInfoScreenDestination(day = day)) }
             ),
         contentAlignment = Alignment.Center
     ) {
@@ -54,5 +71,34 @@ fun Day(
             color = if (day.position == DayPosition.MonthDate) Color.White else Color.Gray,
             fontSize = 12.sp,
         )
+        Column(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .verticalScroll(scrollState)
+                .padding(bottom = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            Spacer(modifier = Modifier.height(16.dp))
+            for (task in tasks.value) {
+                if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear){
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(15.dp)
+                            .padding(horizontal = 2.dp)
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(Color(task.color)),
+                    ) {
+                        Text(
+                            modifier = Modifier.padding(horizontal = 2.dp),
+                            fontSize = 10.sp,
+                            text = task.title,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            }
+        }
     }
 }

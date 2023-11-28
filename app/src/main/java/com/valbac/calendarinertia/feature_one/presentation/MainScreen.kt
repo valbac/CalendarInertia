@@ -123,7 +123,7 @@ fun MainScreen(
             )
             {
                 when (selectedItemIndex) {
-                    0 -> CalendarMonthScreen()
+                    0 -> CalendarMonthScreen(navigator = navigator)
                     1 -> TaskInfoScreen(navigator = navigator)
                     5 -> SettingsScreen()
                 }
