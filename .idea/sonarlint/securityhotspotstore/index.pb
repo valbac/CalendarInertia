@@ -61,3 +61,5 @@ n
 Napp/src/androidTest/java/com/valbac/calendarinertia/ExampleInstrumentedTest.kt,4\5\45876a23e4377aeddc82f2e758003aec3d7af744
 Ü
 Vapp/src/main/java/com/valbac/calendarinertia/feature_one/presentation/task/TaskItem.kt,9\6\96a0c3c72f1a6f20a4169cd48839aa9c95698b38
+è
+_app/src/main/java/com/valbac/calendarinertia/feature_one/presentation/calendar/DayInfoScreen.kt,b\c\bc13be5b3be104a151335fb522df1bea328acc70

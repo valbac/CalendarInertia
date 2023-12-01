@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,7 +27,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.valbac.calendarinertia.feature_one.presentation.destinations.AddEditTaskScreenDestination
 import com.valbac.calendarinertia.feature_one.presentation.destinations.DayInfoScreenDestination
 import com.valbac.calendarinertia.feature_one.presentation.task.TaskViewModel
 
@@ -42,12 +40,14 @@ fun Day(
     val tasks = viewModel.tasks.collectAsState(initial = emptyList())
     val scrollState = rememberScrollState()
 
+    val sortedTaskList = tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
             .border(
-                width =  0.dp,
+                width = 0.dp,
                 color = Color.Transparent,
             )
             .padding(1.dp)
@@ -76,11 +76,10 @@ fun Day(
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
                 .verticalScroll(scrollState)
-                .padding(bottom = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp),
+                .padding(top = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-            for (task in tasks.value) {
+            for (task in sortedTaskList) {
                 if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear){
                     Box(
                         modifier = Modifier

@@ -26,7 +26,8 @@ import com.valbac.calendarinertia.feature_one.domain.model.TaskEntity
 @Composable
 fun TaskItem(
     task: TaskEntity,
-    viewModel: TaskViewModel = hiltViewModel()
+    viewModel: TaskViewModel = hiltViewModel(),
+    onDeleteClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -50,8 +51,18 @@ fun TaskItem(
                 fontSize = 14.sp
             )
         }
+        Column (
+            modifier = Modifier.padding(vertical = 12.dp)
+        ) {
+            Checkbox(
+                checked = task.isDone,
+                onCheckedChange = {isChecked ->
+                    viewModel.onEvent(TaskEvent.OnDoneChange(task, isChecked))
+                }
+            )
+        }
         Column(
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 12.dp)
         ) {
             Text(
                 text = "${task.dateDay}.${task.dateMonth}.${task.dateYear}",
@@ -63,22 +74,14 @@ fun TaskItem(
             )
         }
         Column(
-            modifier = Modifier.padding(vertical = 12.dp),
+            modifier = Modifier.padding(vertical = 12.dp)
         ) {
-            IconButton(onClick = {
-                viewModel.onEvent(TaskEvent.DeleteTask(task))
-            }) {
+            IconButton(onClick = onDeleteClick) {
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = "Delete Task"
                 )
             }
-            Checkbox(
-                checked = task.isDone,
-                onCheckedChange = {isChecked ->
-                    viewModel.onEvent(TaskEvent.OnDoneChange(task, isChecked))
-                }
-            )
         }
     }
 }

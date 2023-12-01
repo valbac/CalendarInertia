@@ -13,14 +13,22 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.valbac.calendarinertia.feature_one.domain.model.TaskEntity
 import com.valbac.calendarinertia.feature_one.presentation.destinations.AddEditTaskScreenDestination
+import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -32,6 +40,8 @@ fun TaskInfoScreen(
 ) {
 
     val tasks = viewModel.tasks.collectAsState(initial = emptyList())
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
         floatingActionButton = {
@@ -43,7 +53,8 @@ fun TaskInfoScreen(
             {
                 Icon(Icons.Filled.Add, "Floating action button.")
             }
-        }
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) {
         Column {
             Divider(thickness = 64.dp)
@@ -53,6 +64,19 @@ fun TaskInfoScreen(
             ) {
                 items(tasks.value) { task ->
                     TaskItem(task = task)
+                    {
+                        viewModel.onEvent(TaskEvent.DeleteTask(task))
+                        scope.launch {
+                            val result = snackbarHostState.showSnackbar(
+                                message = "Note deleted",
+                                actionLabel = "Undo",
+                                duration = SnackbarDuration.Long
+                            )
+                            if (result == SnackbarResult.ActionPerformed) {
+                                viewModel.onEvent(TaskEvent.RestoreNote)
+                            }
+                        }
+                    }
                 }
             }
         }

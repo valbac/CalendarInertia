@@ -16,10 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,7 +50,6 @@ fun AddEditTaskScreen(
     navigator: DestinationsNavigator,
     viewModel: AddEditTaskViewModel = hiltViewModel()
 ) {
-    val snackbarHostState = remember { SnackbarHostState() }
     val state = viewModel.state
     val calendarState = rememberUseCaseState()
     val clockState = rememberUseCaseState()
@@ -119,17 +115,17 @@ fun AddEditTaskScreen(
                     tint = MaterialTheme.colorScheme.onSurface
                 )
             }
-        },
-        snackbarHost = { SnackbarHost(snackbarHostState) }
+        }
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            TextField(
+            OutlinedTextField(
                 value = state.value.title,
                 onValueChange = { viewModel.onEvent(AddEditTaskEvent.SetTitle(it)) },
                 label = { Text("Title") },
                 placeholder = { Text("...") },
+                singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
