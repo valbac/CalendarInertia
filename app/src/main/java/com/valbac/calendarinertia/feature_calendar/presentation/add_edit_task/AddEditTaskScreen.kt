@@ -7,7 +7,6 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,7 +16,6 @@ import androidx.compose.material.icons.filled.Backspace
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -28,11 +26,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -201,7 +196,6 @@ fun AddEditTaskScreen(
                     .fillMaxWidth()
                     .padding(16.dp)
             )
-            CustomTextField()
             Button(onClick = {
                 calendarState.show()
             }) {
@@ -263,40 +257,6 @@ fun AddEditTaskScreen(
                 Icon(
                     imageVector = Icons.Default.Backspace,
                     contentDescription = "Delete alarm"
-                )
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun CustomTextField() {
-    val rows = remember { mutableStateOf(listOf<Pair<Boolean, MutableState<String>>>()) }
-
-    Button(onClick = {
-        rows.value = rows.value + Pair(false, mutableStateOf(""))
-    }) {
-        Text("Add Task")
-    }
-    Column {
-        rows.value.forEach { row ->
-            Row {
-                TextField(
-                    value = row.second.value,
-                    onValueChange = { newValue -> row.second.value = newValue },
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent
-                    ),
-                    placeholder = { Text(text = "...") },
-                    leadingIcon = {
-                        Checkbox(checked = row.first, onCheckedChange = { newValue ->
-                            rows.value =
-                                rows.value.map { if (it == row) it.copy(first = newValue) else it }
-                        })
-                    }
                 )
             }
         }

@@ -100,10 +100,7 @@ fun MainScreen(
                                 text =
                                 when (selectedItemIndex) {
                                     1 -> "Tasks"
-                                    2 -> "Appointments"
-                                    3 -> "Birthdays"
-                                    4 -> "Public holidays"
-                                    5 -> "Settings"
+                                    2 -> "Settings"
                                     else -> "Calendar Inertia"
                                 }
                             )
@@ -128,7 +125,7 @@ fun MainScreen(
                     when (selectedItemIndex) {
                         0 -> CalendarMonthScreen(navigator = navigator)
                         1 -> TaskInfoScreen(navigator = navigator)
-                        5 -> SettingsScreen(navigator = navigator)
+                        2 -> SettingsScreen()
                     }
                 }
             }

@@ -1,16 +1,10 @@
 package com.valbac.calendarinertia.feature_calendar.presentation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Celebration
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.FreeCancellation
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Task
-import androidx.compose.material.icons.outlined.Celebration
 import androidx.compose.material.icons.outlined.DateRange
-import androidx.compose.material.icons.outlined.FreeCancellation
-import androidx.compose.material.icons.outlined.List
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Task
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -32,21 +26,6 @@ val items = listOf(
         title = "Tasks",
         selectedIcon = Icons.Filled.Task,
         unselectedIcon = Icons.Outlined.Task
-    ),
-    NavigationItem(
-        title = "Appointments",
-        selectedIcon = Icons.Filled.List,
-        unselectedIcon = Icons.Outlined.List
-    ),
-    NavigationItem(
-        title = "Birthdays",
-        selectedIcon = Icons.Filled.Celebration,
-        unselectedIcon = Icons.Outlined.Celebration
-    ),
-    NavigationItem(
-        title = "Public holidays",
-        selectedIcon = Icons.Filled.FreeCancellation,
-        unselectedIcon = Icons.Outlined.FreeCancellation
     ),
     NavigationItem(
         title = "Settings",
