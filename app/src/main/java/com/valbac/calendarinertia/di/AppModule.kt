@@ -2,9 +2,9 @@ package com.valbac.calendarinertia.di
 
 import android.app.Application
 import androidx.room.Room
-import com.valbac.calendarinertia.feature_one.data.local.TheDatabase
-import com.valbac.calendarinertia.feature_one.data.repository.TaskRepositoryImpl
-import com.valbac.calendarinertia.feature_one.domain.repository.TaskRepository
+import com.valbac.calendarinertia.feature_calendar.data.local.TheDatabase
+import com.valbac.calendarinertia.feature_calendar.data.repository.TaskRepositoryImpl
+import com.valbac.calendarinertia.feature_calendar.domain.repository.TaskRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
