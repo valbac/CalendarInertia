@@ -7,15 +7,16 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Backspace
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -27,6 +28,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -56,6 +58,15 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.valbac.calendarinertia.core.AlarmItem
 import com.valbac.calendarinertia.feature_calendar.data.AlarmSchedulerImpl
+import com.valbac.calendarinertia.ui.theme.templateColorBlue
+import com.valbac.calendarinertia.ui.theme.templateColorGreen
+import com.valbac.calendarinertia.ui.theme.templateColorGreenBlue
+import com.valbac.calendarinertia.ui.theme.templateColorOrange
+import com.valbac.calendarinertia.ui.theme.templateColorPink
+import com.valbac.calendarinertia.ui.theme.templateColorPurple
+import com.valbac.calendarinertia.ui.theme.templateColorRed
+import com.valbac.calendarinertia.ui.theme.templateColorTurquoise
+import com.valbac.calendarinertia.ui.theme.templateColorYellow
 import java.time.LocalDateTime
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -73,9 +84,15 @@ fun AddEditTaskScreen(
     val colorState = rememberUseCaseState()
     val pickedColor = remember { mutableStateOf(Color.Red.toArgb()) }
     val templateColors = MultipleColors.ColorsInt(
-        Color.Yellow.toArgb(),
-        Color.Green.toArgb(),
-        Color.Cyan.toArgb(),
+        templateColorRed.toArgb(),
+        templateColorOrange.toArgb(),
+        templateColorYellow.toArgb(),
+        templateColorGreen.toArgb(),
+        templateColorGreenBlue.toArgb(),
+        templateColorTurquoise.toArgb(),
+        templateColorBlue.toArgb(),
+        templateColorPurple.toArgb(),
+        templateColorPink.toArgb(),
     )
     var checked by remember { mutableStateOf(false) }
 
@@ -134,8 +151,7 @@ fun AddEditTaskScreen(
         ),
         config = ColorConfig(
             templateColors = templateColors,
-            defaultDisplayMode = ColorSelectionMode.TEMPLATE,
-            allowCustomColorAlphaValues = false
+            displayMode = ColorSelectionMode.TEMPLATE
         ),
     )
 
@@ -153,27 +169,78 @@ fun AddEditTaskScreen(
             },
                 title = {
                     Text(
-                        text = "Task"
+                        text = "Task",
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                ),
+                actions = {
+                    Text(
+                        text = "Reminder?",
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Switch(
+                        checked = state.value.checked,
+                        onCheckedChange = {
+                            if (!checked) {
+                                if (!hasNotificationPermission) {
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                                    }
+                                } else {
+                                    alarmItem = AlarmItem(
+                                        time = LocalDateTime.of(
+                                            state.value.dateYear,
+                                            state.value.dateMonth,
+                                            state.value.dateDay,
+                                            state.value.hour,
+                                            state.value.minute,
+                                            state.value.second
+                                        ),
+                                        message = state.value.title
+                                    )
+                                    alarmItem?.let(scheduler::schedule)
+                                }
+                            }
+                            checked = it
+                            viewModel.onEvent(AddEditTaskEvent.SetReminder(checked))
+                        },
+                        thumbContent = if (checked) {
+                            {
+                                Icon(
+                                    imageVector = Icons.Filled.Check,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(SwitchDefaults.IconSize),
+                                )
+                            }
+                        } else {
+                            null
+                        },
+                        enabled = state.value.hour in 0..23 && state.value.title != "" && state.value.dateYear != 0
                     )
                 }
             )
         },
+
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
                     viewModel.onEvent(AddEditTaskEvent.SaveTask)
                     navigator.popBackStack()
                 },
-                containerColor = MaterialTheme.colorScheme.primary
+                containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {
                 Icon(
                     imageVector = Icons.Default.Done,
                     contentDescription = "Save note",
-                    tint = MaterialTheme.colorScheme.onSurface
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             }
         }
-    ) {innerPadding ->
+    ) { innerPadding ->
         Column(
             modifier = Modifier.padding(innerPadding)
         ) {
@@ -185,8 +252,54 @@ fun AddEditTaskScreen(
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(16.dp),
+                textStyle = MaterialTheme.typography.titleLarge
             )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Button(
+                    modifier = Modifier
+                        .padding(4.dp),
+                    onClick = {
+                        calendarState.show()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(text = "Date Picker")
+                }
+                Button(
+                    modifier = Modifier
+                        .padding(4.dp),
+                    onClick = {
+                        clockState.show()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(text = "Time Picker")
+                }
+                Button(
+                    modifier = Modifier
+                        .padding(4.dp),
+                    onClick = {
+                        colorState.show()
+                    },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(text = "Color Picker")
+                }
+            }
             OutlinedTextField(
                 value = state.value.description,
                 onValueChange = { viewModel.onEvent(AddEditTaskEvent.SetDescription(it)) },
@@ -194,71 +307,9 @@ fun AddEditTaskScreen(
                 placeholder = { Text("...") },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(16.dp),
+                textStyle = MaterialTheme.typography.bodyMedium
             )
-            Button(onClick = {
-                calendarState.show()
-            }) {
-                Text(text = "Date Picker")
-            }
-            Button(onClick = {
-                clockState.show()
-            }) {
-                Text(text = "Time Picker")
-            }
-            Button(onClick = {
-                colorState.show()
-            }) {
-                Text(text = "Color Picker")
-            }
-            Text(text = "Remind me?")
-            Switch(
-                checked = state.value.checked,
-                onCheckedChange = {
-                    if (!checked) {
-                        if (!hasNotificationPermission) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                            }
-                        } else {
-                            alarmItem = AlarmItem(
-                                time = LocalDateTime.of(
-                                    state.value.dateYear,
-                                    state.value.dateMonth,
-                                    state.value.dateDay,
-                                    state.value.hour,
-                                    state.value.minute,
-                                    state.value.second
-                                ),
-                                message = state.value.title
-                            )
-                            alarmItem?.let(scheduler::schedule)
-                        }
-                    }
-                    checked = it
-                    viewModel.onEvent(AddEditTaskEvent.SetReminder(checked))
-                },
-                thumbContent = if (checked) {
-                    {
-                        Icon(
-                            imageVector = Icons.Filled.Check,
-                            contentDescription = null,
-                            modifier = Modifier.size(SwitchDefaults.IconSize),
-                        )
-                    }
-                } else {
-                    null
-                },
-                enabled = state.value.hour in 0..23 && state.value.title != "" && state.value.dateYear != 0
-            )
-            IconButton(
-                onClick = { alarmItem?.let(scheduler::cancel) },
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Backspace,
-                    contentDescription = "Delete alarm"
-                )
-            }
         }
     }
 }

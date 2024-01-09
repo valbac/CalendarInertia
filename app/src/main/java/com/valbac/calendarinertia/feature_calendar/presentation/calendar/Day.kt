@@ -13,13 +13,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,9 +57,9 @@ fun Day(
             .padding(1.dp)
             .background(
                 color = when {
-                    isToday -> Color.Gray
-                    day.position == DayPosition.MonthDate -> Color.DarkGray
-                    else -> Color.LightGray
+                    isToday -> MaterialTheme.colorScheme.inversePrimary
+                    day.position == DayPosition.MonthDate -> MaterialTheme.colorScheme.primaryContainer
+                    else -> MaterialTheme.colorScheme.secondaryContainer
                 }
             )
             .clickable(
@@ -68,7 +72,7 @@ fun Day(
                 .align(Alignment.TopCenter)
                 .padding(top = 3.dp),
             text = day.date.dayOfMonth.toString(),
-            color = if (day.position == DayPosition.MonthDate) Color.White else Color.Gray,
+            color = if (day.position == DayPosition.MonthDate) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSecondaryContainer,
             fontSize = 12.sp,
         )
         Column(
@@ -83,6 +87,9 @@ fun Day(
                 if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear){
                     Box(
                         modifier = Modifier
+                            .alpha(
+                                if (task.isDone) 0.25f else 1.0f
+                            )
                             .fillMaxWidth()
                             .height(15.dp)
                             .padding(horizontal = 2.dp)
@@ -91,7 +98,13 @@ fun Day(
                     ) {
                         Text(
                             modifier = Modifier.padding(horizontal = 2.dp),
-                            fontSize = 10.sp,
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                shadow = Shadow(
+                                    color = Color.DarkGray,
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 0.5f
+                                )
+                            ),
                             text = task.title,
                             overflow = TextOverflow.Ellipsis
                         )

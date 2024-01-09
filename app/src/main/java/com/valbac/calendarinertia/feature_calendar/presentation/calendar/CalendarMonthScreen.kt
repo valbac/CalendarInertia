@@ -1,7 +1,6 @@
 package com.valbac.calendarinertia.feature_calendar.presentation.calendar
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,7 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.kizitonwose.calendar.compose.CalendarState
 import com.kizitonwose.calendar.compose.ContentHeightMode
 import com.kizitonwose.calendar.compose.HorizontalCalendar
@@ -35,7 +33,6 @@ fun CalendarMonthScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Black)
     ) {
 
         val today = remember { LocalDate.now() }

@@ -21,6 +21,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -34,10 +35,8 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.valbac.calendarinertia.feature_calendar.presentation.calendar.CalendarMonthScreen
-import com.valbac.calendarinertia.feature_calendar.presentation.settings.SettingsScreen
 import com.valbac.calendarinertia.feature_calendar.presentation.task.TaskInfoScreen
 import kotlinx.coroutines.launch
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @RootNavGraph(start = true)
@@ -47,8 +46,7 @@ fun MainScreen(
     navigator: DestinationsNavigator,
 ) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        modifier = Modifier.fillMaxSize()
     ) {
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         val scope = rememberCoroutineScope()
@@ -57,7 +55,10 @@ fun MainScreen(
         }
         ModalNavigationDrawer(
             drawerContent = {
-                ModalDrawerSheet {
+                ModalDrawerSheet(
+                    drawerContainerColor = MaterialTheme.colorScheme.background,
+
+                ) {
                     Spacer(modifier = Modifier.height(16.dp))
                     items.forEachIndexed { index, item ->
                         NavigationDrawerItem(
@@ -84,11 +85,13 @@ fun MainScreen(
                                     Text(text = item.badgeCount.toString())
                                 }
                             },
-                            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
+                            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding),
+                            colors = NavigationDrawerItemDefaults.colors(
+                                unselectedContainerColor = MaterialTheme.colorScheme.background
+                            )
                         )
                     }
                 }
-
             },
             drawerState = drawerState
         ) {
@@ -100,7 +103,6 @@ fun MainScreen(
                                 text =
                                 when (selectedItemIndex) {
                                     1 -> "Tasks"
-                                    2 -> "Settings"
                                     else -> "Calendar Inertia"
                                 }
                             )
@@ -117,6 +119,10 @@ fun MainScreen(
                                 )
                             }
                         },
+                        colors = TopAppBarDefaults.mediumTopAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.background,
+                            titleContentColor = MaterialTheme.colorScheme.onBackground
+                        )
                     )
                 }
             )
@@ -125,7 +131,6 @@ fun MainScreen(
                     when (selectedItemIndex) {
                         0 -> CalendarMonthScreen(navigator = navigator)
                         1 -> TaskInfoScreen(navigator = navigator)
-                        2 -> SettingsScreen()
                     }
                 }
             }

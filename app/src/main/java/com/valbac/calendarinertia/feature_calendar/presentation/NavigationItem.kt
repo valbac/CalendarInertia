@@ -2,10 +2,8 @@ package com.valbac.calendarinertia.feature_calendar.presentation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Task
 import androidx.compose.material.icons.outlined.DateRange
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Task
 import androidx.compose.ui.graphics.vector.ImageVector
 
@@ -26,10 +24,5 @@ val items = listOf(
         title = "Tasks",
         selectedIcon = Icons.Filled.Task,
         unselectedIcon = Icons.Outlined.Task
-    ),
-    NavigationItem(
-        title = "Settings",
-        selectedIcon = Icons.Filled.Settings,
-        unselectedIcon = Icons.Outlined.Settings
     )
 )
