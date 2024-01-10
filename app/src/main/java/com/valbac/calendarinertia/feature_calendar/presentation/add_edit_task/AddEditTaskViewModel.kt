@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.valbac.calendarinertia.feature_calendar.domain.model.TaskEntity
 import com.valbac.calendarinertia.feature_calendar.domain.repository.TaskRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,6 +21,9 @@ class AddEditTaskViewModel @Inject constructor(
 
     private val _state = mutableStateOf(AddEditTaskState())
     val state: State<AddEditTaskState> = _state
+
+    private val _showDialog = MutableStateFlow(false)
+    val showDialog: StateFlow<Boolean> = _showDialog
 
     init {
         savedStateHandle.get<Int>("id")?.let {
@@ -44,6 +49,22 @@ class AddEditTaskViewModel @Inject constructor(
         }
     }
 
+    fun validateInputs(title: String, color: Int, dateDay: Int, hour: Int): Boolean {
+        var isValid = true
+        if (title.isBlank() || color >= 0 || dateDay <= 0 || hour < 0) {
+            _showDialog.value = true
+            isValid = false
+        } else {
+            _showDialog.value = false
+        }
+        return isValid
+    }
+
+
+    fun closeDialog() {
+        _showDialog.value = false
+    }
+
     fun onEvent(event: AddEditTaskEvent) {
         when (event) {
             is AddEditTaskEvent.SaveTask -> {
@@ -60,10 +81,6 @@ class AddEditTaskViewModel @Inject constructor(
                 val second = state.value.second
                 val id = state.value.id
                 val checked = state.value.checked
-
-                if (title.isBlank() || description.isBlank()) {
-                    return
-                }
 
                 val task = TaskEntity(
                     title = title,

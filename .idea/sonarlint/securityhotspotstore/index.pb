@@ -37,8 +37,6 @@ Xapp/src/main/java/com/valbac/calendarinertia/feature_calendar/domain/model/Task
 japp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/calendar/CalendarMonthScreen.kt,a\2\a26423c0311b8e1dbf0dd7e9224a2311ffff088b
 ä
 Zapp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/calendar/Day.kt,7\0\703c38bf80b7b7b03f8976a4d45e8380de321d43
-ï
-eapp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/settings/SettingsScreen.kt,f\3\f3b1efdd2d7d068078ae629106b1d275864475df
 n
 >app/src/main/java/com/valbac/calendarinertia/core/AlarmItem.kt,9\8\985d75e461d816b403f382f8d309e4d7ec1e0f08
 ú
@@ -55,8 +53,6 @@ Xapp/src/main/java/com/valbac/calendarinertia/feature_calendar/data/AlarmSchedul
 papp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/add_edit_task/AddEditTaskViewModel.kt,8\f\8f9da7313d7fe512e081ef561d5330c34d3e904a
 ú
 lapp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/add_edit_task/AddEditTaskState.kt,0\1\01f1eb439d82683ada1acd7ad4abeb508df2a99e
-å
-\app/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/task/TaskState.kt,1\7\17300f013da482bd2ff563b22f8a7b07e2cdf9dd
 å
 \app/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/task/TaskEvent.kt,2\0\2009a801690b139e38b171d5f07ee719d2172c68
 ê

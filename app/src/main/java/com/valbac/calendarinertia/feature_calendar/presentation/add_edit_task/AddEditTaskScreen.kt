@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -97,6 +98,10 @@ fun AddEditTaskScreen(
     var checked by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
+
+    val showDialog by viewModel.showDialog.collectAsState()
+
+    ErrorDialog(showDialog = showDialog, onDismiss = viewModel::closeDialog)
 
     var hasNotificationPermission by remember {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -228,8 +233,11 @@ fun AddEditTaskScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewModel.onEvent(AddEditTaskEvent.SaveTask)
-                    navigator.popBackStack()
+                    val isValid = viewModel.validateInputs(state.value.title, state.value.color, state.value.dateDay, state.value.hour)
+                    if (isValid) {
+                        viewModel.onEvent(AddEditTaskEvent.SaveTask)
+                        navigator.popBackStack()
+                    }
                 },
                 containerColor = MaterialTheme.colorScheme.primaryContainer
             ) {

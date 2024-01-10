@@ -1,9 +1,4 @@
 
-Okotlin:S1172S"+Remove this unused function parameter "id".(‰›¼üÿÿÿÿ8•ÖãÅÍ1
-Dkotlin:S6615w" Remove this useless initializer.(’Ü¬¦ûÿÿÿÿ8—ÖãÅÍ1
-9kotlin:S1128"Remove this unused import.(‰Ñß8ªÖãÅÍ1
->kotlin:S1128"Remove this unused import.(ôÿŠèüÿÿÿÿ8ªÖãÅÍ1
-9kotlin:S1128 "Remove this unused import.(š ”8ªÖãÅÍ1
->kotlin:S1128!"Remove this unused import.(‘ôÏ şÿÿÿÿ8ªÖãÅÍ1
-9kotlin:S1128#"Remove this unused import.(¼ª±Æ8ªÖãÅÍ1
-vkotlin:S3776Q"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(”³÷¨øÿÿÿÿ8­ÖãÅÍ1
+Okotlin:S1172N"+Remove this unused function parameter "id".(‰›¼üÿÿÿÿ8•ÖãÅÍ1
+Dkotlin:S6615r" Remove this useless initializer.(’Ü¬¦ûÿÿÿÿ8—ÖãÅÍ1
+vkotlin:S3776L"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(”³÷¨øÿÿÿÿ8­ÖãÅÍ1

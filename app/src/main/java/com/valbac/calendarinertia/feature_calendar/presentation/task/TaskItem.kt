@@ -116,22 +116,24 @@ fun TaskItem(
             }
 
         }
-        Row(
-            modifier = Modifier
-                .padding(horizontal = 12.dp)
-                .padding(bottom = 12.dp)
-        ) {
-            Text(
-                text = "${task.description}",
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    shadow = Shadow(
-                        color = Color.DarkGray,
-                        offset = Offset(x = 2f, y = 4f),
-                        blurRadius = 0.5f
-                    )
-                ),
-                color = MaterialTheme.colorScheme.onSurface,
-            )
+        if (task.description.isNotBlank()) {
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .padding(bottom = 12.dp)
+            ) {
+                Text(
+                    text = "${task.description}",
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        shadow = Shadow(
+                            color = Color.DarkGray,
+                            offset = Offset(x = 2f, y = 4f),
+                            blurRadius = 0.5f
+                        )
+                    ),
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+            }
         }
     }
 }
