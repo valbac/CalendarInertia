@@ -21,6 +21,7 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
     }
 
     buildTypes {
@@ -78,16 +79,14 @@ dependencies {
     ksp("io.github.raamcosta.compose-destinations:ksp:1.8.42-beta")
 
     // Room
-    implementation ("androidx.room:room-runtime:2.5.0")
-    ksp ("androidx.room:room-compiler:2.5.0")
-
-    // Kotlin Extensions and Coroutines support for Room
+    implementation ("androidx.room:room-runtime:2.5.1")
+    ksp ("androidx.room:room-compiler:2.5.1")
     implementation ("androidx.room:room-ktx:2.5.0")
 
     // More Icons
     implementation ("androidx.compose.material:material-icons-extended:1.5.4")
 
-    // The compose calendar library
+    // Calendar library
     implementation ("com.kizitonwose.calendar:compose:2.4.0")
 
     // Dagger - Hilt
@@ -98,4 +97,10 @@ dependencies {
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt ("com.google.dagger:hilt-android-compiler:2.48")
     kapt ("androidx.hilt:hilt-compiler:1.0.0")
+
+    // Date-Time-Color Picker
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:core:1.1.1")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:calendar:1.1.1")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:clock:1.1.1")
+    implementation ("com.maxkeppeler.sheets-compose-dialogs:color:1.1.1")
 }

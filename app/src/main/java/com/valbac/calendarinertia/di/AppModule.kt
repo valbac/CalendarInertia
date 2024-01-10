@@ -1,27 +1,32 @@
 package com.valbac.calendarinertia.di
 
-import android.content.Context
+import android.app.Application
 import androidx.room.Room
-import com.valbac.calendarinertia.feature_one.data.local.TheDatabase
-import com.valbac.calendarinertia.feature_one.data.repository.TaskRepositoryImpl
-import com.valbac.calendarinertia.feature_one.domain.repository.TaskRepository
+import com.valbac.calendarinertia.feature_calendar.data.local.TheDatabase
+import com.valbac.calendarinertia.feature_calendar.data.repository.TaskRepositoryImpl
+import com.valbac.calendarinertia.feature_calendar.domain.repository.TaskRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
-interface AppModule {
-    val db: TheDatabase
-    val taskRepository: TaskRepository
-}
-
-class AppModuleImpl(
-    private val appContext: Context
-) : AppModule {
-    override val db: TheDatabase by lazy {
-        Room.databaseBuilder(
-            appContext,
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): TheDatabase {
+        return Room.databaseBuilder(
+            app,
             TheDatabase::class.java,
             TheDatabase.DATABASE_NAME
         ).build()
     }
-    override val taskRepository: TaskRepository by lazy {
-        TaskRepositoryImpl(db.taskDao)
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(db: TheDatabase): TaskRepository {
+        return TaskRepositoryImpl(db.taskDao)
     }
 }
