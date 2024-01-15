@@ -7,17 +7,17 @@ My personal, easy-to-use calendar that keeps me in motion.
 
 
 <div align="left">
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130725.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024018.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024031.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024041.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130725.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024018.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024031.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024041.png" width ="240" />
 </div>
 
 <div align="left">
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130804.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_125434.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024052.png" width ="160" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_131104.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130804.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_125434.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024052.png" width ="240" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_131104.png" width ="240" />
 </div>
 
 
