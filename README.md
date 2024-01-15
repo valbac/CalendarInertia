@@ -1,4 +1,4 @@
-![Logo](https://raw.githubusercontent.com/valbac/CalendarInertia/master/app/src/main/res/mipmap-hdpi/ic_launcher.webp?token=GHSAT0AAAAAACMJ7DYDEPXF726OBTDAWLHEZM6UGGQ)
+![Logo](https://github.com/valbac/CalendarInertia/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp)
 
 # Calendar Inertia
 
