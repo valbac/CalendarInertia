@@ -7,17 +7,17 @@ My personal, easy-to-use calendar that keeps me in motion.
 
 
 <div align="left">
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130725.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024018.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024031.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024041.png" width ="160" />
 </div>
 
 <div align="left">
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
-<img src = "https://camo.githubusercontent.com/6607af06dd2ce8a82f8f9f47fe821be0fcb4080611fb8ba90cce86b339386c83/68747470733a2f2f7669612e706c616365686f6c6465722e636f6d2f343638783330303f746578743d4170702b53637265656e73686f742b48657265" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130804.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_125434.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024052.png" width ="160" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_131104.png" width ="160" />
 </div>
 
 
