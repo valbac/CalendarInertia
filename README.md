@@ -16,7 +16,7 @@ My personal, easy-to-use calendar that keeps me in motion.
 <div align="left">
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130804.png" width ="200" />
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_125434.png" width ="200" />
-<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024052.png" width ="200" />
+<img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_133724.png" width ="200" />
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_131104.png" width ="200" />
 </div>
 
