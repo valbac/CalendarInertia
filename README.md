@@ -1,18 +1,17 @@
-![Logo](https://github.com/valbac/CalendarInertia/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp)
+<img align="left" width="130" height="130" src="https://github.com/valbac/CalendarInertia/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" alt="app icon">
 
 # Calendar Inertia
 
 My personal, easy-to-use calendar that keeps me in motion.
 
 
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
 ## Demo
 
 Insert gif or link to demo
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## Built with 🛠
