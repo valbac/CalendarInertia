@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -50,7 +49,8 @@ fun DayInfoScreen(
     navigator: DestinationsNavigator
 ) {
     val tasks = viewModel.tasks.collectAsState(initial = emptyList())
-    val sortedTaskList = tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
+    val sortedTaskList =
+        tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -88,17 +88,17 @@ fun DayInfoScreen(
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
     )
-    {innerPadding ->
-        Column (
+    { innerPadding ->
+        Column(
             modifier = Modifier.padding(innerPadding)
-        ){
+        ) {
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(sortedTaskList) { task ->
                     if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear) {
-                        TaskItem(task = task,
+                        TaskItem(
+                            task = task,
                             modifier = Modifier.clickable {
                                 navigator.navigate(AddEditTaskScreenDestination(task.id))
                             }

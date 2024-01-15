@@ -1,6 +1,7 @@
 package com.valbac.calendarinertia.feature_calendar.presentation
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -43,7 +44,7 @@ import kotlinx.coroutines.launch
 @Destination
 @Composable
 fun MainScreen(
-    navigator: DestinationsNavigator,
+    navigator: DestinationsNavigator
 ) {
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -128,9 +129,14 @@ fun MainScreen(
             )
             { innerPadding ->
                 Column(modifier = Modifier.padding(innerPadding)) {
-                    when (selectedItemIndex) {
-                        0 -> CalendarMonthScreen(navigator = navigator)
-                        1 -> TaskInfoScreen(navigator = navigator)
+                    AnimatedContent (
+                        targetState = selectedItemIndex, label = "NavigationDrawerAnimation"
+                    ) {
+                        targetState ->
+                        when (targetState) {
+                            0 -> CalendarMonthScreen(navigator = navigator)
+                            1 -> TaskInfoScreen(navigator = navigator)
+                        }
                     }
                 }
             }
