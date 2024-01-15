@@ -5,7 +5,6 @@
 My personal, easy-to-use calendar that keeps me in motion.
 
 
-
 <div align="left">
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_130725.png" width ="200" />
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_024018.png" width ="200" />
@@ -19,11 +18,6 @@ My personal, easy-to-use calendar that keeps me in motion.
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_133724.png" width ="200" />
 <img src = "https://github.com/valbac/CalendarInertia/blob/master/ART/Screenshot_20240115_131104.png" width ="200" />
 </div>
-
-
-## Demo
-
-Insert gif or link to demo
 
 
 ## Built with 🛠
@@ -41,6 +35,8 @@ Insert gif or link to demo
 - Compose Destinations - A KSP library that processes annotations and generates code that uses Official Jetpack Compose Navigation under the hood. 
 - Calendar library - A highly customizable calendar library for Android, backed by RecyclerView for the view system, and LazyRow/LazyColumn for compose.
 - Sheets-Compose-Dialogs - An Android library that offers dialogs & views for various use cases - build with Jetpack Compose.
+
+
 ## Architecture 👷‍♂️
 This app uses MVVM(Model View View-Model) architecture.
 
