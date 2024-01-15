@@ -45,7 +45,8 @@ fun TaskInfoScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navigator.navigate(AddEditTaskScreenDestination(0))
+                    navigator.navigate(AddEditTaskScreenDestination(0)){
+                    }
                 }
             )
             {
@@ -61,8 +62,7 @@ fun TaskInfoScreen(
                 items(tasks.value) { task ->
                     TaskItem(
                         task = task,
-                        modifier = Modifier
-                            .clickable {
+                        modifier = Modifier.clickable {
                                 navigator.navigate(AddEditTaskScreenDestination(task.id))
                             }
                     )

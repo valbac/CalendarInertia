@@ -94,8 +94,6 @@ Q.idea/sonarlint/securityhotspotstore/e/b/eb391df49f5889eed2d876a12a626b47d6f0cb
 w
 G.idea/sonarlint/issuestore/9/8/985d75e461d816b403f382f8d309e4d7ec1e0f08,a\7\a7427da3b5ea131b3287ac90c0b74298117a6d99
 Å
-Q.idea/sonarlint/securityhotspotstore/1/7/17300f013da482bd2ff563b22f8a7b07e2cdf9dd,f\7\f74961416c933ee5979b160e34abe86f2b7835e5
-Å
 Q.idea/sonarlint/securityhotspotstore/f/2/f2faf2f1b82d793daf19662090d369dccce1c27f,8\9\8999992612a119e87bab1d09d05222f17cdbfe60
 Å
 Q.idea/sonarlint/securityhotspotstore/8/f/8f9da7313d7fe512e081ef561d5330c34d3e904a,d\c\dcd07b6fb1631eff8c91561c10e2339172b145a1
@@ -103,8 +101,6 @@ w
 G.idea/sonarlint/issuestore/f/2/f2faf2f1b82d793daf19662090d369dccce1c27f,9\0\90e464f6279c1f676eebd014ba2dd0dce8c1da01
 Å
 Q.idea/sonarlint/securityhotspotstore/3/d/3dfb56e2095fc09461e669394304e060f5a5f243,1\6\16365b4bbff11073317b0df2bc8767563424703b
-Å
-Q.idea/sonarlint/securityhotspotstore/f/3/f3b1efdd2d7d068078ae629106b1d275864475df,3\c\3c2e58e6620cd55d9fe915deca4f8197b5d5045a
 Å
 Q.idea/sonarlint/securityhotspotstore/9/8/985d75e461d816b403f382f8d309e4d7ec1e0f08,5\8\5826d8db5e5d7fe829d297d62f2e3fa4c421faef
 Å
@@ -141,3 +137,5 @@ G.idea/sonarlint/issuestore/c/5/c5ade87a19b58b1e3ac3d9e92bb945634f91109c,c\f\cf
 Q.idea/sonarlint/securityhotspotstore/0/1/0183ce66aef976f0b8d0f3ebab6b03cad2b9a1c1,f\2\f2f69b317ca61a7193ffa56d46fb13b909688e32
 å
 \app/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/NavigationItem.kt,7\4\74a3efb616196985ec0de013542b835cfb35a3ca
+ó
+gapp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/add_edit_task/ErrorDialog.kt,8\e\8ecc62c85f7e894a60091797651179ed3d44991c
