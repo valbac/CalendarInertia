@@ -41,3 +41,7 @@ My personal, easy-to-use calendar that keeps me in motion.
 This app uses MVVM(Model View View-Model) architecture.
 
 ![MVVM-Architecture](https://raw.githubusercontent.com/aritra-tech/Notify/master/art/mvvm.png)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/](https://github.com/valbac/CalendarInertia/tree/master?tab=MIT-1-ov-file)https://github.com/valbac/CalendarInertia/tree/master?tab=MIT-1-ov-file)
