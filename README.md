@@ -44,4 +44,4 @@ This app uses MVVM(Model View View-Model) architecture.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/](https://github.com/valbac/CalendarInertia/tree/master?tab=MIT-1-ov-file)https://github.com/valbac/CalendarInertia/tree/master?tab=MIT-1-ov-file)
+[MIT](https://github.com/valbac/CalendarInertia/tree/master?tab=MIT-1-ov-file)
