@@ -33,18 +33,29 @@ import com.kizitonwose.calendar.core.DayPosition
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.valbac.calendarinertia.feature_calendar.presentation.destinations.DayInfoScreenDestination
 import com.valbac.calendarinertia.feature_calendar.presentation.task.TaskViewModel
+import com.valbac.calendarinertia.ui.theme.GreenGrey60
+import com.valbac.calendarinertia.ui.theme.Red40
+import java.time.LocalDate
 
 @Composable
 fun Day(
-    viewModel: TaskViewModel = hiltViewModel(),
+    viewModelTask: TaskViewModel = hiltViewModel(),
+    viewModelCalendar: CalendarViewModel = hiltViewModel(),
     navigator: DestinationsNavigator,
     day: CalendarDay,
     isToday: Boolean,
 ) {
-    val tasks = viewModel.tasks.collectAsState(initial = emptyList())
+    val tasks = viewModelTask.tasks.collectAsState(initial = emptyList())
+    val publicHolidaysDE =
+        viewModelCalendar.publicHolidaysDEFlow.collectAsState(initial = emptyList())
     val scrollState = rememberScrollState()
 
-    val sortedTaskList = tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
+    val publicHolidaysDESorted =
+        publicHolidaysDE.value.sortedBy { it.date }
+
+    val sortedTaskList =
+        tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
+
 
     Box(
         modifier = Modifier
@@ -75,6 +86,7 @@ fun Day(
             color = if (day.position == DayPosition.MonthDate) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSecondaryContainer,
             fontSize = 12.sp,
         )
+
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
@@ -83,8 +95,33 @@ fun Day(
                 .padding(top = 20.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
+            for (publicHoliday in publicHolidaysDESorted) {
+                val composedDate = LocalDate.of(day.date.year, day.date.month, day.date.dayOfMonth)
+                if (composedDate == LocalDate.parse(publicHoliday.date)) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(15.dp)
+                            .background(MaterialTheme.colorScheme.errorContainer),
+                    ) {
+                        Text(
+                            modifier = Modifier.padding(horizontal = 2.dp),
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                shadow = Shadow(
+                                    color = Color.DarkGray,
+                                    offset = Offset(x = 2f, y = 4f),
+                                    blurRadius = 0.5f
+                                )
+                            ),
+                            text = publicHoliday.localName,
+                            overflow = TextOverflow.Ellipsis,
+                            color = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    }
+                }
+            }
             for (task in sortedTaskList) {
-                if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear){
+                if (day.date.dayOfMonth == task.dateDay && day.date.month.value == task.dateMonth && day.date.year == task.dateYear) {
                     Box(
                         modifier = Modifier
                             .alpha(
