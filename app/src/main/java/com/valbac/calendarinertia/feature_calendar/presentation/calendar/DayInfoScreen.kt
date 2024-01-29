@@ -29,6 +29,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -60,12 +61,10 @@ fun DayInfoScreen(
     navigator: DestinationsNavigator
 ) {
     val tasks = viewModel.tasks.collectAsState(initial = emptyList())
-    val publicHolidaysDE =
-        viewModelCalendar.publicHolidaysDEFlow.collectAsState(initial = emptyList())
+    val publicHolidaysDE by viewModelCalendar.getPublicHolidaysDEFlow().collectAsState(initial = emptyList())
     val sortedTaskList =
         tasks.value.sortedWith(compareBy({ it.hour }, { it.minute }, { it.second }))
-    val publicHolidaysDESorted =
-        publicHolidaysDE.value.sortedBy { it.date }
+    val publicHolidaysDESorted = publicHolidaysDE.sortedBy { it.date }
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
 

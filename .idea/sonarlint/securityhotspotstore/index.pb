@@ -303,3 +303,5 @@ kapp/src/main/java/com/valbac/calendarinertia/feature_calendar/domain/repository
 mapp/src/main/java/com/valbac/calendarinertia/feature_calendar/data/repository/PublicHolidaysRepositoryImpl.kt,d\c\dc5ae306644730cd60352205f094fa26934014f3
 ˜
 happ/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/calendar/CalendarViewModel.kt,2\2\22f2dfbaaa77e34f5c601ae05a2ed120be598411
+¦
+vapp/src/main/java/com/valbac/calendarinertia/feature_calendar/presentation/public_holidays/PublicHolidaysInfoScreen.kt,4\b\4b58bbb2899a24a505f0ce571f5e50b2f7a48ded
