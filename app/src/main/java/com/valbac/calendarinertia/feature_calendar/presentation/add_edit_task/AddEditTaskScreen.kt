@@ -190,25 +190,8 @@ fun AddEditTaskScreen(
                     Switch(
                         checked = state.value.checked,
                         onCheckedChange = {
-                            if (!checked) {
-                                if (!hasNotificationPermission) {
-                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                                        permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                                    }
-                                } else {
-                                    alarmItem = AlarmItem(
-                                        time = LocalDateTime.of(
-                                            state.value.dateYear,
-                                            state.value.dateMonth,
-                                            state.value.dateDay,
-                                            state.value.hour,
-                                            state.value.minute,
-                                            state.value.second
-                                        ),
-                                        message = state.value.title
-                                    )
-                                    alarmItem?.let(scheduler::schedule)
-                                }
+                            if (!checked && !hasNotificationPermission && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                                permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                             }
                             checked = it
                             viewModel.onEvent(AddEditTaskEvent.SetReminder(checked))
@@ -233,8 +216,27 @@ fun AddEditTaskScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    val isValid = viewModel.validateInputs(state.value.title, state.value.color, state.value.dateDay, state.value.hour)
+                    val isValid = viewModel.validateInputs(
+                        state.value.title,
+                        state.value.color,
+                        state.value.dateDay,
+                        state.value.hour
+                    )
                     if (isValid) {
+                        if (checked) {
+                            alarmItem = AlarmItem(
+                                time = LocalDateTime.of(
+                                    state.value.dateYear,
+                                    state.value.dateMonth,
+                                    state.value.dateDay,
+                                    state.value.hour,
+                                    state.value.minute,
+                                    state.value.second
+                                ),
+                                message = state.value.title
+                            )
+                            alarmItem?.let(scheduler::schedule)
+                        }
                         viewModel.onEvent(AddEditTaskEvent.SaveTask)
                         navigator.popBackStack()
                     }

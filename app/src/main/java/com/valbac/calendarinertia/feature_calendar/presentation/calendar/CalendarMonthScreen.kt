@@ -28,7 +28,7 @@ import java.time.YearMonth
 @Destination
 @Composable
 fun CalendarMonthScreen(
-    navigator: DestinationsNavigator
+    navigator: DestinationsNavigator,
 ) {
     Column(
         modifier = Modifier

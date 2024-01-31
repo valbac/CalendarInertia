@@ -36,6 +36,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.valbac.calendarinertia.feature_calendar.presentation.calendar.CalendarMonthScreen
+import com.valbac.calendarinertia.feature_calendar.presentation.public_holidays.PublicHolidaysInfoScreen
 import com.valbac.calendarinertia.feature_calendar.presentation.task.TaskInfoScreen
 import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -104,6 +105,7 @@ fun MainScreen(
                                 text =
                                 when (selectedItemIndex) {
                                     1 -> "Tasks"
+                                    2 -> "Public Holidays"
                                     else -> "Calendar Inertia"
                                 }
                             )
@@ -136,6 +138,7 @@ fun MainScreen(
                         when (targetState) {
                             0 -> CalendarMonthScreen(navigator = navigator)
                             1 -> TaskInfoScreen(navigator = navigator)
+                            2 -> PublicHolidaysInfoScreen()
                         }
                     }
                 }

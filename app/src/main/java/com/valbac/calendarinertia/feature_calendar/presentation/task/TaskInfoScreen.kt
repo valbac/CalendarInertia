@@ -2,7 +2,6 @@ package com.valbac.calendarinertia.feature_calendar.presentation.task
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,7 +20,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -57,7 +55,7 @@ fun TaskInfoScreen(
     ) {
         Column {
             LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+
             ) {
                 items(tasks.value) { task ->
                     TaskItem(

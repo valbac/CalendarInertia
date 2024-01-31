@@ -39,7 +39,7 @@ fun TaskItem(
             .alpha(
                 if (task.isDone) 0.25f else 1.0f
             )
-            .padding(horizontal = 12.dp)
+            .padding(start = 12.dp, end = 12.dp, bottom = 6.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(color = Color(task.color))
 
