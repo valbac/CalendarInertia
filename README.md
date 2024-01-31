@@ -31,6 +31,7 @@ My personal, easy-to-use calendar that keeps me in motion.
 - [Dependency Injection](https://developer.android.com/training/dependency-injection)
     - [Hilt-Dagger](https://dagger.dev/hilt/) - A standard way to incorporate Dagger dependency injection into an Android application.
     - [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting ViewModel.
+- [Retrofit](https://square.github.io/retrofit/) - Retrofit is a type-safe HTTP client for Android and Java, developed by Square, that simplifies the process of making network requests to APIs, enabling easy interaction with these services.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous calls and tasks to utilize threads.
 - [Compose Destinations](https://github.com/raamcosta/compose-destinations) - A KSP library that processes annotations and generates code that uses Official Jetpack Compose Navigation under the hood. 
 - [Calendar library](https://github.com/kizitonwose/Calendar/tree/main) - A highly customizable calendar library for Android, backed by RecyclerView for the view system, and LazyRow/LazyColumn for compose.
